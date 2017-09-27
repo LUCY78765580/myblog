@@ -1,0 +1,34 @@
+{% extends "./base.html" %}
+
+
+{% block title %}<title>加友链  | 韦艳莹的博客</title>{% endblock %}
+
+{% block page_content %}
+    <div class="pageDiv newLinkPageDiv">
+        <div class="pageNavigation breadcrumb">
+            <li><a href="{{ url_for('.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+            <li><a href="{{ url_for('.new_link') }}">加友链</a></li>
+            <li class="active"></li>
+			<li class="active pull-right"></li>
+			<li class="pull-right"><a href="{{ url_for('admin.index') }}">回后台</a></li>
+        </div>
+        <div class="New">
+            <form class='NewForm' method="POST" action="">
+                {{ form.hidden_tag() }}
+				<div>{{ form.name(class="form-control",placeholder=form.name.label.text) }}</div>
+                <div style="margin-top:15px;clear:both;"></div>
+				<div>{{ form.link(rows=6,cols=50,placeholder=form.link.label.text) }}</div>
+				<div style="margin-top:20px;">{{ form.submit(class="btn btn-default") }}</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+                         
+
+
+
+
+
+
+
+

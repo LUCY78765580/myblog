@@ -1,0 +1,21 @@
+{% extends "./base.html" %}
+
+{% block title %}<title>标签 | 韦艳莹的博客</title>{% endblock %}
+
+
+{% block page_content %}
+	 <div class="pageDiv tagPageDiv">
+        <div class="pageNavigation breadcrumb">
+            <li><a href="{{ url_for('.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+            <li><a href="{{ url_for('.tag') }}">标签</a></li>
+			<li class="active"></li>
+		</div>
+		<div class="labelContent">
+			<div class="labelItem">
+				{% for tag in tag_list %}
+					<a href="{{ url_for('.tag_detail',id=tag.id,name=tag.name) }}">{{ tag.name }}<span>&nbsp;({{ tag.posts.count() }})</span></a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

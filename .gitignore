@@ -1,0 +1,8 @@
+venv/
+migrations/
+log/
+*.sqlite
+*.log
+*.swp
+*.pyc
+

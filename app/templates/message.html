@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+
+{% block title %}<title>给我留言 | 韦艳莹的博客</title>{% endblock %}
+
+
+{% block page_content %}
+    <div class="pageDiv messagePageDiv">
+        <div class="pageNavigation breadcrumb">
+            <li><a href="{{ url_for('.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+            <li><a href="{{ url_for('.message') }}">给我留言</a></li>
+			<li class="active"></li>
+		</div>
+		<div class="messageHead">
+			<span>这里是交流想法的地方，欢迎大家畅所欲言。</span>
+		</div>
+		<div class="messageContent">
+			<!--高速版-->
+			<div id="SOHUCS" sid="0000"></div>
+			<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+				window.changyan.api.config({
+					appid: 'cyteCdq6Y',
+					conf: 'prod_e2a2d5a32280b6a1488eca337a30c52a'
+				});
+			</script>
+		</div>
+	</div>
+{% endblock %}
