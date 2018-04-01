@@ -1,10 +1,12 @@
 {% extends "./base.html" %}
+{% import "./_macros.html" as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}<title>{{ post.title }}  |  韦艳莹的博客</title>{% endblock %}
 
 
 {% block page_content %}
-    <div class="pageDiv aboutPageDiv">
+    <div class="pageDiv homePageDiv">
         <div class="pageNavigation breadcrumb">
             <li><a href="{{ url_for('.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
 			<li><a href="{{ url_for('.home') }}">文章</a></li>
@@ -12,10 +14,10 @@
         </div>
 		<div class="postHead">
 			<span class="postHeadTitle">{{ post.title }}</span>
-			<span class="postHeadTime">{{ post.formatDateTime()}}</span>
-			<span class="postHeadAuthor">作者：weiyanying</span>
-			<span class="postHeadRead">阅读：（<span class="postHeadReadnumber">{{ post.view }}</span>）</span>
-				
+			<span class="postHeadTime">发表于&nbsp;{{ post.formatCreateTime() }}</span>
+			<span class="postHeadTime">更新于&nbsp;{{ post.formatUpdateTime() }}</span>
+			<span class="postHeadRead">阅读: (<span class="postHeadnumber">{{ post.view }}</span>)</span>
+   			<span class="postHeadView">评论: (<span class="postHeadnumber">{{ post.comments.count() }}</span>)</span>
 		</div>
 		<div class="postContent">
 			{% if post.content_html %}
@@ -23,50 +25,34 @@
 			{% else %}
 				{{ post.content }}
 			{% endif %}
+			<div class="postContentFooter">
+			{% if current_user.is_authenticated %}
+                <a class="postContentFooterDelete pull-right" href="{{ url_for('.edit_post',id=post.id,title=post.title) }}">
+                    <span class="glyphicon glyphicon-trash"></span>&nbsp;删除
+                </a>
+                <a class="postContentFooterEdit pull-right" href="{{ url_for('.edit_post',id=post.id,title=post.title) }}">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;编辑
+                </a>
+            {% endif %}
+			</div>
 		</div>
 		<div class="postFooter">
-			<span class="postFooterCopyright">© 转载请注明：
-				<a href="{{ url_for('.home') }}"> weiyanying.com </a>
-				<span>>></span>
-				<a href="{{ url_for('.post',id=post.id,title=post.title) }}">{{ post.title }}</a>
-			</span>
-			{% if current_user.is_authenticated %}
-			<a class="postFooterEdit pull-right" href="{{ url_for('.edit_post',id=post.id,title=post.title) }}">
-				<span class="glyphicon glyphicon-pencil"></span>&nbsp;编辑
-			</a>
-			{% else %}
-				{% for tag in post.tag %}
-				<a class="postFooterTag pull-right" href="{{ url_for('.tag_detail',id=tag.id,name=tag.name) }}">{{ tag.name }}</a> 
-				{% endfor %}
-			{% endif %}
-			<!-- JiaThis Button BEGIN -->
-			<div class="jiathis_style_24x24">
-				<a class="jiathis_button_weixin"></a>
-				<a class="jiathis_button_douban"></a>
-				<a class="jiathis_button_tsina"></a>
-				<a class="jiathis_button_qzone"></a>
-				<a class="jiathis_button_renren"></a>
-				<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-				<a class="jiathis_counter_style"></a>
+			<div class="postCommentForm New">
+       			{% include 'comment_form.html' %}
 			</div>
-			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-			<!-- JiaThis Button END -->
-			<div class="postFooterLink">
-				<a href="#nowhere" class="like"><span class="glyphicon glyphicon-heart-empty" style="color:white !important;"></span> 喜欢 (<span class="likeNumber">{{ post.like }}</span>)
-				</a>
-				<a href="{{ url_for('.donate') }}" class="donate"><span class="glyphicon glyphicon-jpy"></span>小额赞助
-				</a>
+			<div class="postCommentNumber">
+				<span class="comment-number pull-right">嗨, 共有评论&nbsp;&nbsp;<span class="post-comment-number">{{ post.comments.count() }}</span>&nbsp;&nbsp;条</span>
 			</div>
-		</div>
-		<!--畅言评论高速版-->
-		<div id="SOHUCS" sid="{{ post.id }}"></div>
-			<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
-			<script type="text/javascript">
-				window.changyan.api.config({
-					appid: 'cyteCdq6Y',
-					conf: 'prod_e2a2d5a32280b6a1488eca337a30c52a'
-				});
-		</script>
+			<div class="postCommentAll">
+				{% include '_comments.html' %}
+			</div>
+			{% if pagination %}
+        	<div class="allPagination">
+            	{{ macros.pagination_widget(pagination,'.post',id=post.id,title=post.title) }}
+        	</div>
+        	{% endif %}
+        	<div class="blankblock"></div>
+    	</div>
 	</div>
 {% endblock %}
 

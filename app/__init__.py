@@ -32,16 +32,18 @@ def create_app(config_name):
 	db.init_app(app)
 	login_manager.init_app(app)
 	simplemde.init_app(app)
+	
 	from .admin import admin
 	admin.init_app(app)	
 
-	from .admin import NewPostView,NewSayView,NewLinkView,PostView,SayView,LinkView
+	from .admin import NewPostView,NewSayView,NewLinkView,UserView,PostView,SayView,LinkView
 	admin.add_view(NewPostView(name=u'写文章',endpoint='new_post'))
 	admin.add_view(NewSayView(name=u'写说说',endpoint='new_say'))
 	admin.add_view(NewLinkView(name=u'添加友链',endpoint='new_link'))
-	admin.add_view(PostView(db.session,name=u'管理文章',endpoint='posts'))
-	admin.add_view(SayView(db.session,name=u'管理说说',endpoint='says'))
-	admin.add_view(LinkView(db.session,name=u'管理友链',endpoint='links'))
+	admin.add_view(UserView(db.session,name=u'用户管理',endpoint='users'))
+	admin.add_view(PostView(db.session,name=u'文章管理',endpoint='posts'))
+	admin.add_view(SayView(db.session,name=u'说说管理',endpoint='says'))
+	admin.add_view(LinkView(db.session,name=u'友链管理',endpoint='links'))
 
 	if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
 		from flask_sslify import SSLify
@@ -52,6 +54,9 @@ def create_app(config_name):
 
 	from .main import main as main_blueprint
 	app.register_blueprint(main_blueprint)
+
+	from .api import api as api_blueprint
+	app.register_blueprint(api_blueprint,url_prefix='/api')
 
 	return app
 

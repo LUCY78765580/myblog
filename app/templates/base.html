@@ -16,19 +16,18 @@
 	{% block navbar %} 
 		<nav class="headBar">
 			<div class="headBarLink">
-				<a href="{{ url_for('main.home') }}">首 页</a>
-				<a href="{{ url_for('main.technique') }}">技 术</a>
-				<a href="{{ url_for('main.life') }}">生 活</a>
-				<a href="{{ url_for('main.say') }}">说 说</a>
-				<a href="{{ url_for('main.tag') }}">标 签</a>
-				<a href="{{ url_for('main.link')}}">友 链</a>
-				<a href="{{ url_for('main.donate') }}">赞 助 作 者</a>
-				<a href="{{ url_for('main.message') }}">给 我 留 言</a>
-				<a href="{{ url_for('main.about') }}">关 于</a>
+				<a href="{{ url_for('main.home') }}">Home</a>
+				<a href="{{ url_for('main.technique') }}">Technique</a>
+				<a href="{{ url_for('main.life') }}">Life</a>
+				<a href="{{ url_for('main.say') }}">Say something</a>
+				<a href="{{ url_for('main.tag') }}">Tags</a>
+				<a href="{{ url_for('main.link')}}">Links</a>
+				<a href="{{ url_for('main.about') }}">About</a>
 				{% if current_user.is_authenticated %}
-					<a href="{{ url_for('auth.logout') }}">注 销</a>
+					<a href="{{ url_for('auth.logout') }}">Log out</a>
+                    <a href="{{ url_for('admin.index')}}">Admin</a>
 				{% else %}
-					<a href="{{ url_for('auth.login') }}">登 录</a>
+					<a href="{{ url_for('auth.login') }}">Log in</a>
 				{% endif %}
 			</div>
 		</nav>

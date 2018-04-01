@@ -7,7 +7,7 @@
     <div class="pageDiv linkPageDiv">
         <div class="pageNavigation breadcrumb">
             <li><a href="{{ url_for('.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
-            <li><a href="{{ url_for('.link') }}">友链</a></li>
+            <li class="active">友链</li>
             {% if current_user.is_authenticated %}
             <li class="active pull-right"></li>
             <li class="pull-right"><a href="{{ url_for('.new_link') }}">加友链</a></li>
