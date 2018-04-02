@@ -13,6 +13,5 @@ lib64
 include
 local
 share
-pip-selfcheck.json
 
 
