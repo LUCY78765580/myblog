@@ -32,21 +32,21 @@ def make_shell_context():
 #	upgrade()
 
 
-@manager.command    
-def init_data():
-	""" cretat a new user as admin"""
-	db.create_all()
-	admin_name=os.environ.get('FLASK_ADMIN_NAME')
-	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
-	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
-	user_admin=User(name=admin_name,email=admin_email,password=admin_password)
-	db.session.add(user_admin)
-	db.session.commit()
+#@manager.command    
+#def init_data():
+#	""" cretat a new user as admin"""
+#	db.create_all()
+#	admin_name=os.environ.get('FLASK_ADMIN_NAME')
+#	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
+#	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
+#	user_admin=User(name=admin_name,email=admin_email,password=admin_password)
+#	db.session.add(user_admin)
+#	db.session.commit()
 
-@manager.command
-def drop_all_data():
-	"""drop the database"""
-	db.drop_all()
+#@manager.command
+#def drop_all_data():
+#	"""drop the database"""
+#	db.drop_all()
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))

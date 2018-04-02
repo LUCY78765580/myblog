@@ -66,11 +66,11 @@ class HerokuConfig(ProductionConfig):
 
 
 config = {
-    'development': DevelopmentConfig,
-    'testing': TestingConfig,
-    'production': ProductionConfig,
-    'unix': UnixConfig,
+	'development': DevelopmentConfig,
+	'testing': TestingConfig,
+	'production': ProductionConfig,
+	'unix': UnixConfig,
 	'heroku': HerokuConfig,
-    'default': DevelopmentConfig
+	'default': DevelopmentConfig
 }
 
