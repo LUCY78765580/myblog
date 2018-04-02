@@ -1,4 +1,4 @@
-ll_env/
+ll_env
 migrations/
 log/
 *.sqlite
