@@ -127,6 +127,7 @@ def new_say():
 		say=Say(content=form.content.data,create_time=datetime.now(),author=current_user)
 		db.session.add(say)
 		db.session.commit()
+		flash(u'成功发表说说!')
 		return redirect(url_for('.say'))
 	return render_template('new_say.html',form=form)
 
@@ -144,6 +145,7 @@ def new_link():
 		link=Link(name=form.name.data,link=form.link.data,create_time=datetime.now(),author=current_user)
 		db.session.add(link)
 		db.session.commit()
+		flash(u'成功添加友链!')
 		return redirect(url_for('.link'))
 	return render_template('new_link.html',form=form)
 

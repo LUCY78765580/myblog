@@ -15,14 +15,14 @@ def login():
 		if user is not None and user.verify_password(form.password.data):
 			login_user(user)
 			return redirect(url_for('main.home'))
-		flash('用户名或密码错误')
+		flash('账户或密码错误')
 	return render_template('auth/login.html',form=form)
 
 @auth.route('/logout')
 @login_required
 def logout():
 	logout_user()
-	flash('You have been logged out.')
+	flash('成功退出')
 	return redirect(url_for('.login'))
 
 
