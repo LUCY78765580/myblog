@@ -1,3 +1,4 @@
+ll_env/
 migrations/
 log/
 *.sqlite
@@ -5,4 +6,5 @@ log/
 *.swp
 *.pyc
 .env
+
 
