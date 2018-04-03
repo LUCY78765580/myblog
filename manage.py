@@ -8,7 +8,7 @@ from flask_migrate import Migrate, MigrateCommand,upgrade
 
 app=create_app(os.getenv('FLASK_CONFIG') or 'default')
 migrate=Migrate(app,db)
-#manager=Manager(app)
+manager=Manager(app)
 
 
 @app.shell_context_processor
@@ -29,7 +29,6 @@ def profile(length, profile_dir):
 @app.cli.command()
 def deploy():
 	"""Run deployment tasks."""
-	db.create_all()
 	admin_name=os.environ.get('FLASK_ADMIN_NAME')
 	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
 	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
@@ -38,10 +37,10 @@ def deploy():
 	db.session.commit()
 	upgrade()
 
-#manager.add_command('shell', Shell(make_context=make_shell_context))
-#manager.add_command('db',MigrateCommand)
+manager.add_command('shell', Shell(make_context=make_shell_context))
+manager.add_command('db',MigrateCommand)
 
-#if __name__=='__main__':
-#	manager.run()
+if __name__=='__main__':
+	manager.run()
 
 
