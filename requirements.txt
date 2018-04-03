@@ -22,7 +22,6 @@ Jinja2==2.10
 Mako==1.0.7
 Markdown==2.6.11
 MarkupSafe==1.0
-pkg-resources==0.0.0
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 python-dateutil==2.7.2
