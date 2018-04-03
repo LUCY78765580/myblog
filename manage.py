@@ -26,23 +26,23 @@ def profile(length, profile_dir):
 	app.run()
 
 
-@app.cli.command()
-def deploy():
+#@app.cli.command()
+#def deploy():
 	"""Run deployment tasks."""
-	init()
-	migrate()
-	admin_name=os.environ.get('FLASK_ADMIN_NAME')
-	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
-	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
-	user_admin=User(name=admin_name,email=admin_email,password=admin_password)
-	db.session.add(user_admin)
-	db.session.commit()
-	upgrade()
+#	init()
+#	migrate()
+#	admin_name=os.environ.get('FLASK_ADMIN_NAME')
+#	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
+#	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
+#	user_admin=User(name=admin_name,email=admin_email,password=admin_password)
+#	db.session.add(user_admin)
+#	db.session.commit()
+#	upgrade()
 
-#manager.add_command('shell', Shell(make_context=make_shell_context))
-#manager.add_command('db',MigrateCommand)
+manager.add_command('shell', Shell(make_context=make_shell_context))
+manager.add_command('db',MigrateCommand)
 
-#if __name__=='__main__':
-#	manager.run()
+if __name__=='__main__':
+	manager.run()
 
 
