@@ -31,7 +31,6 @@ def deploy():
 	"""Run deployment tasks."""
 	init()
 	migrate()
-	upgrade()
 	admin_name=os.environ.get('FLASK_ADMIN_NAME')
 	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
 	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
