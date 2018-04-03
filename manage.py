@@ -38,8 +38,8 @@ def deploy():
 	db.session.commit()
 	upgrade()
 
-manager.add_command('shell', Shell(make_context=make_shell_context))
-manager.add_command('db',MigrateCommand)
+#manager.add_command('shell', Shell(make_context=make_shell_context))
+#manager.add_command('db',MigrateCommand)
 
 #if __name__=='__main__':
 #	manager.run()
