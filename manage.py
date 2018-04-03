@@ -4,7 +4,7 @@ import click
 from app import create_app, db
 from app.models import User,Say,Post,Link,Tag,Comment
 from flask_script import Manager, Shell
-from flask_migrate import Migrate, MigrateCommand,upgrade
+from flask_migrate import Migrate, MigrateCommand,init,migrate,upgrade
 
 app=create_app(os.getenv('FLASK_CONFIG') or 'default')
 migrate=Migrate(app,db)
@@ -29,6 +29,9 @@ def profile(length, profile_dir):
 @app.cli.command()
 def deploy():
 	"""Run deployment tasks."""
+	init()
+	migrate()
+	upgrade()
 	admin_name=os.environ.get('FLASK_ADMIN_NAME')
 	admin_email=os.environ.get('FLASK_ADMIN_EMAIL')
 	admin_password=os.environ.get('FLASK_ADMIN_PASSWORD')
