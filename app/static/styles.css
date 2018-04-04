@@ -32,13 +32,13 @@ div.container {
     max-width:880px;
 	margin:0px auto;
 	background-color:white !important;
-	padding-bottom:60%;
+	padding-bottom:90%;
 }
 div.pageDiv {
 	margin:50px 50px 0px;
 }
 div.errorPage {
-	padding-bottom:30%;
+	padding-bottom:70%;
 }
 div.pageNavigation {
 	height:35px;
