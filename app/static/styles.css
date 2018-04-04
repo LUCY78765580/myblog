@@ -32,9 +32,13 @@ div.container {
     max-width:880px;
 	margin:0px auto;
 	background-color:white !important;
+	padding-bottom:25%;
 }
 div.pageDiv {
-	margin:50px 50px 100px;
+	margin:50px 50px 0px;
+}
+div.errorPage {
+	padding-bottom:20%;
 }
 div.pageNavigation {
 	height:35px;
@@ -115,17 +119,17 @@ span.comment-time {
 }
 
 div.loginForm {
-	margin:0 235px;
+	margin:0 32%;
 }
 div.col-md-4 {
 	width:250px;
-	padding:35px 0 125px 0;
+	padding:35px 0 0;
 	font-size:14px;
 	font-family:微软雅黑;
 }
 div.saysomethingAllItem {
-	margin:10px 1px;
-	padding-bottom:10px;
+	margin:0px 1px;
+	padding-bottom:18px;
 	border-bottom:1px solid #D7D7D7;
 }
 div.saysomethingItem {
@@ -194,7 +198,7 @@ span.aboutFooterCopyright a {
 	text-decoration:none;
 }
 div.postReviewAllItem {
-	margin:10px 0px;
+	margin:10px 0;
 	border-top:1px dashed #D7D7D7;
 }
 div.postReviewItem {
@@ -295,7 +299,7 @@ div.postFooter {
 }
 
 div.linkAllItem {
-	margin:45px 20px 360px 25px;
+	margin:45px 20px 200px 25px;
 }
 span.linkItem {
 	display:inline-block;
@@ -316,7 +320,7 @@ span.linkItem a:hover {
 	cursor:pointer;
 }
 div.labelContent {
-	margin:40px 25px 360px 25px;
+	margin:40px 25px 160px 25px;
 }
 div.labelItem a {
 	display:inline-block;

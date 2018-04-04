@@ -6,7 +6,7 @@
 	<div class="col-md-12">{{ form.content(id="editor",rows=15,cols=41) }}</div>
 	{{ simplemde.load_id("editor") }}
 	<div style="height:10px;clear:both;"></div>
-	<div class="col-md-12">{{ form.brief(placeholder=form.brief.label.text,rows=4,cols=41) }}</div>
+	<div class="col-md-12">{{ form.brief(placeholder=form.brief.label.text,rows=4,cols=41,style="width:100%;overflow:auto;word-break:break-all;") }}</div>
 	<div style="height:10px;clear:both;"></div>
 	<div class="col-md-12">{{ form.tag(class="form-control",placeholder=form.tag.label.text) }}</div>
 	<div style="height:20px;clear:both;"></div>

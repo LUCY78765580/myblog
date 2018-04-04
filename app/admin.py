@@ -17,6 +17,7 @@ admin=Admin(
 
 
 class MyBaseView(BaseView):
+	@login_required
 	def is_accessible(self):
 		return current_user.is_authenticated
 
@@ -37,8 +38,8 @@ class NewLinkView(MyBaseView):
 
 
 
-
 class MyModelView(ModelView):
+	@login_required
 	def is_accessible(self):
 		return current_user.is_authenticated
 
