@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from flask import render_template,redirect,request,url_for,flash
 from flask_login import login_user,logout_user,login_required,current_user
 from . import auth
@@ -14,14 +15,14 @@ def login():
 		if user is not None and user.verify_password(form.password.data):
 			login_user(user)
 			return redirect(url_for('main.home'))
-		flash('账户或密码错误')
+		flash(u'账户或密码错误')
 	return render_template('auth/login.html',form=form)
 
 @auth.route('/logout')
 @login_required
 def logout():
 	logout_user()
-	flash('成功退出')
+	flash(u'成功退出')
 	return redirect(url_for('.login'))
 
 

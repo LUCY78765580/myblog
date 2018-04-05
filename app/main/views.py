@@ -36,7 +36,7 @@ def new_post():
 		db.session.add(post)
 		db.session.commit()
 		return redirect(url_for('.post',id=post.id,title=post.title))
-		flash('成功创建文章！')
+		flash(u'成功创建文章！')
 	return render_template('new_post.html',form=form)
 
 
@@ -54,7 +54,7 @@ def post(id,title):
 		comment=Comment(content=content,content_html=content_html,author=user,post=post,create_time=datetime.now())
 		db.session.add(comment)
 		db.session.commit()
-		flash('评论发表成功')
+		flash(u'评论发表成功')
 		return redirect(url_for('.post',id=post.id,title=title,page=-1))
 	page=request.args.get('page',1,type=int)
 	if page==-1:
@@ -87,7 +87,7 @@ def edit_post(id,title):
 		post.tags=tag_list_now
 		db.session.commit()
 		return redirect(url_for('.post',id=post.id,title=post.title))
-		flash('成功更新文章！')
+		flash(u'成功更新文章！')
 	form.title.data=post.title
 	form.category.data=post.category
 	form.brief.data=post.brief
@@ -108,7 +108,7 @@ def edit_post(id,title):
     #if request.method=='POST' and form.validate_on_submit():
 		#db.session.delete(post)
 		#db.session.commit()
-		#flash('成功删除文章!')
+		#flash(u'成功删除文章!')
 		#return redirect('.home')
 
 
@@ -127,7 +127,7 @@ def new_say():
 		say=Say(content=form.content.data,create_time=datetime.now(),author=current_user)
 		db.session.add(say)
 		db.session.commit()
-		flash('成功发表说说!')
+		flash(u'成功发表说说!')
 		return redirect(url_for('.say'))
 	return render_template('new_say.html',form=form)
 
@@ -145,7 +145,7 @@ def new_link():
 		link=Link(name=form.name.data,link=form.link.data,create_time=datetime.now(),author=current_user)
 		db.session.add(link)
 		db.session.commit()
-		flash('成功添加友链!')
+		flash(u'成功添加友链!')
 		return redirect(url_for('.link'))
 	return render_template('new_link.html',form=form)
 

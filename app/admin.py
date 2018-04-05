@@ -44,10 +44,10 @@ class MyModelView(ModelView):
 class UserView(MyModelView):
 	can_create=False
 	column_labels={
-	'id':'序号',
-	'name':'名称',
-	'email':'电子邮件',
-	'password':'密码',
+	'id':u'序号',
+	'name':u'名称',
+	'email':u'电子邮件',
+	'password':u'密码',
 	}
 	column_list=('id','name','email','password')
 	def __init__(self,session,**kwargs):
@@ -57,14 +57,14 @@ class UserView(MyModelView):
 class PostView(MyModelView):
 	can_create=False
 	column_labels={
-    'id':'序号',
-    'category':'分类',
-	'tag_string':'标签',
-    'title':'标题',
-    'create_time':'发布时间',
-	'view':'浏览',
-    'brief':'摘要',
-    'content':'文章内容'
+    'id':u'序号',
+    'category':u'分类',
+	'tag_string':u'标签',
+    'title':u'标题',
+    'create_time':u'发布时间',
+	'view':u'浏览',
+    'brief':u'摘要',
+    'content':u'文章内容'
     }
 	column_list=('id','category','tag_string','title','create_time','view','brief','content')
 	def __init__(self,session,**kwargs):
@@ -74,10 +74,10 @@ class PostView(MyModelView):
 class SayView(MyModelView):
 	can_create=False
 	column_labels={
-    'id':'序号',
-    'create_time':'发布时间',
-	'like':'点赞',
-    'content':'说说内容'
+    'id':u'序号',
+    'create_time':u'发布时间',
+	'like':u'点赞',
+    'content':u'说说内容'
     }
 	column_list=('id','create_time','like','content')
 	def __init__(self,session,**kwargs):
@@ -86,10 +86,10 @@ class SayView(MyModelView):
 class LinkView(MyModelView):
 	can_create=False
 	column_labels={
-    'id':'序号',
-    'create_time':'时间',
-    'name':'名称',
-    'link':'链接'
+    'id':u'序号',
+    'create_time':u'时间',
+    'name':u'名称',
+    'link':u'链接'
     }	
 	column_list=('id','create_time','name','link')
 	def __init__(self,session,**kwargs):
