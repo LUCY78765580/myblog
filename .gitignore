@@ -6,11 +6,5 @@ log/
 *.pyc
 *.cpf
 .env
-bin
-lib
-lib64
-include
-local
-share
-
+__pycache__
 
