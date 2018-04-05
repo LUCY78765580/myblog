@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 from flask import render_template,redirect,request,url_for,flash
-from flask_login import current_user
+from flask_login import current_user,login_required
 from . import db
 from .models import User,Post,Tag,Say,Link
 from flask_admin import Admin,BaseView,expose,AdminIndexView
@@ -17,6 +17,7 @@ admin=Admin(
 
 
 class MyBaseView(BaseView):
+	@login_required
 	def is_accessible(self):
 		return current_user.is_authenticated
 
@@ -38,6 +39,7 @@ class NewLinkView(MyBaseView):
 
 
 class MyModelView(ModelView):
+	@login_required
 	def is_accessible(self):
 		return current_user.is_authenticated
 
