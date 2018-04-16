@@ -17,7 +17,7 @@
 
 ### 2、架构
 - 整体：Python2.7.14+Flask+SQLAlchemy
-- 前端:Bootstrap+CSS+flask-WTF
+- 前端:Bootstrap+CSS+Flask-WTF
 - 文章编辑器：Flask-SimpleMDE
 - 后台管理：Flask-Admin
 
